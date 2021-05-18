@@ -1,0 +1,133 @@
+html
+  head
+    meta(charset='UTF-8')
+    title nicomatsu-Controller
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/public/stylesheets/style.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js')
+    script(type='text/javascript', src='/public/javascripts/controller.js')
+    script(type='text/javascript', src='/public/javascripts/niconico.js')
+    script(type='text/javascript', src='/public/javascripts/jquery.qrcode.js')
+    script(type='text/javascript', src='/public/javascripts/qrcode.js')
+
+
+
+  body
+    .container
+      h1 nicomatsu
+
+      p !{msg}
+      form#comment.form-horizontal.comment(role='form', action='/nico/comment' ,method='get', onsubmit='if (this.body.value == \'\') return false; handleSubmit(this); this.body.value = \'\'; return false;')
+        //- 名前入力（チェックボックスで表示・非表示を変更）
+        .form-group
+          .input-group
+            label.control-label.col-sm-2.col-4 匿名　
+              input(id='tokumei', type='checkbox', autocomplete="off", checked, onclick="checkdiv(this,'nickname')")
+            input.form-control.col-8(id='nickname', type='text', name='nickname', maxlength='60', placeholder='名前を入力してください' style="border-radius: 5px;display:none;")
+
+        //- コメント入力
+        .form-group
+          .input-group
+            input.form-control.col-sm-10(type='text', name='body', maxlength='60', placeholder='コメントを入力してください' style="border-radius: 5px")
+            button.btn.btn-primary(type='submit')
+              i.fab.fa-telegram-plane 送信
+
+        //- 速さ(レンジスライダで表示)
+        .form-group
+          label.control-label.col-sm-2.col-3 速さ
+          .btn-group.col-sm-4.col-7(data-toggle='buttons')
+            |  🐢
+            input.form-control-range(type='range', name='duration', min='2000', max='5000', value='3500', step='500')
+            |  🐰
+
+        //- 大きさ（ラジオボタン）        
+        .form-group
+          label.control-label.col-sm-2.col-3 大きさ
+          .btn-group.btn-group-toggle.col-sm-3.col-5(data-toggle='buttons')
+            label.btn.btn-secondary
+              input(type='radio', name='size', value='30')
+              |  小
+
+            label.btn.btn-secondary.active
+              input(type='radio', name='size', value='45',checked)
+              |  中
+
+            label.btn.btn-secondary
+              input(type='radio', name='size', value='60')
+              |  大
+
+        //- 色（色を付けたボタン）
+        .form-group
+          label.control-label.col-sm-2.col-1 色
+          .btn-group.btn-group-toggle.col-sm-5.col-9(data-toggle='buttons')
+            label.btn.btn-color.active(style='background-color:White')
+              input(type='radio', name='color', value='White',checked)
+            label.btn.btn-color(style='background-color:Red')
+              input(type='radio', name='color', value='Red')
+            label.btn.btn-color(style='background-color:HotPink')
+              input(type='radio', name='color', value='HotPink')
+            label.btn.btn-color(style='background-color:Orange')
+              input(type='radio', name='color', value='Orange')
+            label.btn.btn-color(style='background-color:Yellow')
+              input(type='radio', name='color', value='Yellow')
+            label.btn.btn-color(style='background-color:Lime')
+              input(type='radio', name='color', value='Lime')
+            label.btn.btn-color(style='background-color:Cyan')
+              input(type='radio', name='color', value='Cyan')
+            label.btn.btn-color(style='background-color:Blue')
+              input(type='radio', name='color', value='Blue')
+            label.btn.btn-color(style='background-color:DarkViolet')
+              input(type='radio', name='color', value='DarkViolet')
+            label.btn.btn-color(style='background-color:Silver')
+              input(type='radio', name='color', value='Silver')
+            label.btn.btn-color(style='background-color:Black')
+              input(type='radio', name='color', value='Black')
+
+      //- スタンプ送信用のフォーム
+      form#stamp.form-horizontal(role='form', action='/nico/like', method='get', onsubmit='handleSubmit(this); return false;')
+        .form-group
+          label.control-label スタンプ
+          .input-group
+            //- サーバから受け取ったstampsフォルダ内のファイル数だけボタンと画像を描画
+            each filename in stampList
+              button.btn.btn-default.btn-stamp(type='button', onclick=`stamp('${filename}')`)
+                img(src=`/public/images/stamps/${filename}.png`, alt=`${filename}`)
+
+        .form-group
+          label.control-label 季節スタンプ
+          .input-group
+            //- サーバから受け取ったseasonsフォルダ内のファイル数だけボタンと画像を描画
+            each filename in seasonStampList
+              button.btn.btn-default.btn-stamp(type='button', onclick=`seasonStamp('${filename}')`)
+                img(src=`/public/images/seasons/${filename}.png`, alt=`${filename}`)
+
+
+      //- アンケート回答用のフォーム
+      form#survey.form-horizontal(style='display:block' role='form' action='/nico/answer' method='get' onsubmit='handleSubmit(this); return false;')
+        .form-group
+          label.control-label アンケート
+          .input-group
+            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'A\')')
+              img(src='/public/images/survey/A.png', alt='A')
+            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'B\')')
+              img(src='/public/images/survey/B.png', alt='B')
+            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'C\')')
+              img(src='/public/images/survey/C.png', alt='C')
+            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'D\')')
+              img(src='/public/images/survey/D.png', alt='D')
+            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'E\')')
+              img(src='/public/images/survey/E.png', alt='E')
+
+      //- QRコード
+      form#QR.form-horizontal
+        .form-group
+          label.control-label QRcode
+          #qrcode
+            script.
+              jQuery('#qrcode').qrcode({
+                width: 128, height: 128,
+                text	: location.href //表示ページのURLを取得する
+              });

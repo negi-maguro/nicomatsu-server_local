@@ -1,0 +1,30 @@
+//- Electronアプリからの入室用
+//- クライアントのみだとプロキシ認証を発火させるタイミングがないのでルーム選択時にサーバに接続させる
+html
+  head
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    link(rel='stylesheet', href='/public/stylesheets/style.css')
+    title Room
+  body
+    .container
+      h1 nicomatsu
+      form(name='myroom')
+        p 開くルームを入力してください。
+        .input-group
+          input#roomName.form-control(type='text')
+          button.btn.btn-info(onclick='sendIpc();') ルームに移動&nbsp
+            i.fas.fas.fa-door-open
+
+    script(type='text/javascript').
+      // ログインボタン
+      function sendIpc() {
+      const myurl = location.href;
+      const url = myurl.replace('startNew','');
+      // preload.jsで定義したグローバルな関数sendRoom()でルーム名をメインプロセスに送信
+      window.api.sendRoom(
+        url,
+        document.getElementById("roomName").value
+      );
+      // 入力ウィンドウを自動的に閉じる
+      window.close();
+      };

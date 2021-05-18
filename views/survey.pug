@@ -1,0 +1,89 @@
+html
+  head
+    meta(charset='UTF-8')
+    title リアルタイムアンケート
+    link(rel='stylesheet', href='/public/stylesheets/style.css')  
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js')
+    script(src='https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    script(type='text/javascript' src='/public/javascripts/chartDraw.js' defer='defer')
+    script(type='text/javascript' src='/public/javascripts/survey.js' defer='defer')
+
+    style.
+      img{
+        display: block;
+        height: auto;
+        width: 30px;
+      }
+
+body
+  .container
+    h1 nicomatsu
+    form.form-horizontal(style='margin: 1px' role='form')
+      .input-group
+        label.control-label.col-8 「#{room}」ルームのアンケート
+            br
+            |※タブを閉じると保存データが消えます
+        .btn.btn-group-toggle.col-4(data-toggle="buttons")
+          button.btn.btn-info.active(onclick="noneBlockChangeByClass('display_change','survey-result','display_text','結果を隠す','結果発表！')",
+                                      data-toggle="tooltip" data-html="true" data-placement="bottom" title="アンケート結果の表示非表示を切り替えます")
+            input#display_change.btn.btn-info(type='checkbox',autocomplete="off", value=0)
+            div#display_text 結果を隠す
+
+      .form-group.question
+        .input-group.col-12()
+          label.control-label(style="margin:0px 10px;")
+            img(src='/public/images/survey/Q.png', alt='質問')
+          input#question.form-control.question(type='text', maxlength='100', placeholder='質問・お題を入力してください' ,
+                                                style="width:40%;", list='question_options', onchange='insertOption(this)', autocomplete='off')
+          
+          //- 質問を保存したら入れるので空のデータリスト
+          datalist#question_options
+
+        .input-group.col-12(style="margin:10px;")
+          label.control-label(style="margin:0px 10px;")
+            img(src='/public/images/survey/A.png', alt='A')
+          input.form-control.question.col-5(id='option_a', type='text', maxlength='80', placeholder='選択肢を入力してください')
+          label.control-label(style="margin:0px 10px;")
+            img(src='/public/images/survey/B.png', alt='B')
+          input.form-control.question.col-5(id='option_b', type='text', maxlength='80', placeholder='選択肢を入力してください')
+        .input-group.col-12(style="margin:10px;")
+          label.control-label(style="margin:0px 10px;")
+            img(src='/public/images/survey/C.png', alt='C')
+          input.form-control.question.col-5(id='option_c', type='text', maxlength='80', placeholder='選択肢を入力してください')
+          label.control-label(style="margin:0px 10px;")
+            img(src='/public/images/survey/D.png', alt='D')
+          input.form-control.question.col-5(id='option_d', type='text', maxlength='80', placeholder='選択肢を入力してください')
+        .input-group.col-12(style="margin:10px;")
+          label.control-label(style="margin:0px 10px;")
+            img(src='/public/images/survey/E.png', alt='E')
+          input.form-control.question.col-5(id='option_e', type='text', maxlength='80', placeholder='選択肢を入力してください')
+
+    form.form-horizontal(style='margin:10px;', role='form')
+      .form-group.col-12
+        .input-group
+          button.btn.btn-primary.col-3(type='button', onclick="saveChart()",
+                                      data-toggle="tooltip", data-placement="bottom", title="質問とアンケート結果を保存します")
+            i
+            |  Save
+          //- ボタン間隔の調整用
+          .btn.col-1
+          button.btn.btn-danger.col-3(type='button', onclick="restChart()",
+                                      data-toggle="tooltip", data-html="true", data-placement="bottom", title="表示を初期化します")
+            i
+            |  Reset
+          //- ボタン間隔の調整用
+          .btn.col-1
+          button.btn.btn-success.col-3(type='button', onclick="reloadChart()",
+                                      data-toggle="tooltip", data-html="true", data-placement="bottom", title="選択された質問のアンケート結果を再表示します")
+            i
+            |  Load
+
+
+    .row
+      .chart-container.col-lg-6.survey-result
+        canvas#my_doughnut_chart
+      .chart-container.col-lg-6.survey-result
+        canvas#my_bar_chart
