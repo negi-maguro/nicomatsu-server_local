@@ -43,7 +43,7 @@ HerokuのWebDyno上にデプロイして動作可能な状態としている。
 
 1. GitHubで本リポジトリをフォークする
 2. [Heroku](https://id.heroku.com/login)よりSign Upを行う。
-3. Create New App より新規アプリを作成する。このときApp Nameに入力したものがURLになる。
+3. Create New App より新規アプリを作成する。このときApp Nameに入力したものがURLおよびnicomatsu-displayの接続先となる。
 4. Deployタブを開き Deployment method で GitHub を選択する
 5. GitHubと接続させてフォークしたリポジトリを選択する
 6. masterブランチを選択してデプロイする
