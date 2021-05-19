@@ -4,6 +4,7 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
 
 # DEMO
 [nicomatsu-demo](https://nicomatsu-demo.herokuapp.com)
+※ InternetExprorerでは動きません
 1. 任意のルーム名でログイン
 2. controllerが開きます
 3. デスクトップアプリで同じルームに入るとコメントやアンケート結果が見れます。
@@ -14,9 +15,10 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
 
 5. 透明なウィンドウでコメントを重ねるデスクトップアプリ(nicomatsu-display)
 [windows10用インストーラ](https://github.com/mochiokun/nicomatsu-display/archive/refs/tags/installer_win10_v1.0.0.zip)
-接続先のHerokuアプリ名に`nicomatsu-demo`と入れることでデモ用サーバに接続します。
+接続先のHerokuアプリ名に`nicomatsu-demo`と入れることでデモ用サーバ(各画面へのリンク表示あり)に接続します。
+デモ用じゃないのをお試しで軽く使ってみたい場合は`nicomatsu`に接続してください。(Herokuの時間上限で使えないや、同時接続多数で遅いなどあれば下記手順より専用のHerokuアプリ構築をお願いします。)
 
-# Features
+# Feature
 発表やWebミーティングの際に、画面共有元で[nicomatsu-display](https://github.com/mochiokun/nicomatsu-display)を利用することで、資料の上にコメントやスタンプを重ねて共有が可能となる。
 
 参加者側のコメント・質問やリアクション（スタンプ）が画面上に流れるので、発表者側で拾うことができ、一体感のある双方向のコミュニケーションを実現する。
