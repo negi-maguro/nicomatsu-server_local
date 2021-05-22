@@ -14,8 +14,8 @@ stampNames.forEach((stampFullname) => {
 });
 
 const seasonStampNames = fs.readdirSync('./public/images/seasons');
-seasonStampNames.forEach((seaonStampFullname) => {
-  seasonStampName = seaonStampFullname.replace(/\.[^/.]+$/, "")
+seasonStampNames.forEach((seasonStampFullname) => {
+  seasonStampName = seasonStampFullname.replace(/\.[^/.]+$/, "")
   seasonStampList.push(seasonStampName);
 });
 
