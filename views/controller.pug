@@ -85,6 +85,8 @@ html
               input(type='radio', name='color', value='Silver')
             label.btn.btn-color(style='background-color:Black')
               input(type='radio', name='color', value='Black')
+            label.btn.btn-color.rainbow
+              input(type='radio', name='color', value='Rainbow')
 
       //- スタンプ送信用のフォーム
       form#stamp.form-horizontal(role='form', action='/nico/like', method='get', onsubmit='handleSubmit(this); return false;')
