@@ -41,6 +41,11 @@ function handleComment (msg) {
   commentText.style.whiteSpace = 'pre';
   commentText.style.zIndex = 2147483647;
 
+  // 虹色の場合はrainbowtxtクラスのスタイルを適用
+  if (color == 'Rainbow'){
+    commentText.classList.add('rainbowtext')
+  }
+
   // 名前部分のスタイル設定（サイズと文字色を固定）
   commentName.style.fontSize = 20 + 'pt';
   commentName.style.color = 'black';
