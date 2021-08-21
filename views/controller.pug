@@ -20,7 +20,7 @@ html
       h1 nicomatsu
 
       p !{msg}
-      form#comment.form-horizontal.comment(role='form', action='/nico/comment' ,method='get', onsubmit='if (this.body.value == \'\') return false; handleSubmit(this); this.body.value = \'\'; return false;')
+      form#comment.form-horizontal.comment(role='form', action='/nico/comment' ,method='post', onsubmit='if (this.body.value == \'\') return false; handleSubmit(this); this.body.value = \'\'; return false;')
         //- 名前入力（チェックボックスで表示・非表示を変更）
         .form-group
           .input-group

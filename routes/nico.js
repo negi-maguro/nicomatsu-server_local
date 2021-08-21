@@ -11,18 +11,18 @@ app.io.sockets.on('connection', function(socket) {
   });
 });
 
+// POSTリクエストのクエリパラメタのコメント情報をemitする
+router.post('/comment/:room_id', function(req, res) {
+  const msg = req.body;
+  app.io.to(req.params.room_id).emit('comment', msg);
+  res.end()
+});
+
 // Getリクエストのクエリパラメタのスタンプ情報をJSONにしてemitする
 router.get('/like/:room_id', function (req, res) {
   const msg = extend({}, req.query);
   app.io.to(req.params.room_id).emit('like', msg);
   res.end();
-});
-
-// Getリクエストのクエリパラメタのコメント情報をJSONにしてemitする
-router.get('/comment/:room_id', function(req, res) {
-  const msg = extend({}, req.query);
-  app.io.to(req.params.room_id).emit('comment', msg);
-  res.end()
 });
 
 // Getリクエストのクエリパラメタのアンケート回答情報をJSONにしてemitする
