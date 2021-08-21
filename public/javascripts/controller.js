@@ -11,16 +11,16 @@ console.log(roomName);
 
 
 /*------------------------------------------------------
-* コメントをGetリクエストで送信する
+* コメントをPOSTリクエストで送信する
 * 引数：コメントのフォームオブジェクト
 * 戻り値：なし
 *-----------------------------------------------------*/
 function handleSubmit (form) {
   const action = $(form).attr('action');
   const params = $(form).serialize();
-  const url = `${action}/${roomName}/?${params}`;
+  const url = `${action}/${roomName}`;
   console.log(url);
-  $.get(url)
+  $.post(url,`${params}`)
    .fail(function () {
      alert('failed to send message.');
   });
