@@ -29,13 +29,6 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
 [windows10用インストーラ](https://github.com/mochiokun/nicomatsu-display/archive/refs/tags/installer_win10_v1.0.0.zip)
 接続先のHerokuアプリ名に`nicomatsu`と入れることでデモ用サーバに接続します。
 
-# Feature
-発表やWebミーティングの際に、画面共有元で[nicomatsu-display](https://github.com/mochiokun/nicomatsu-display)を利用することで、資料の上にコメントやスタンプを重ねて共有が可能となる。
-
-参加者側のコメント・質問やリアクション（スタンプ）が画面上に流れるので、発表者側で拾うことができ、一体感のある双方向のコミュニケーションを実現する。
-
-アンケートは参加者の回答をリアルタイムで集計・反映されるため、その場で結果共有が可能。
-
 # Requirement
 node.jsとnpmのインストールが必要。
 * node.js
