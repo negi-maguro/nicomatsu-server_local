@@ -21,13 +21,20 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
 2. コメント投稿用の画面が開きます。
 3. デスクトップアプリで同じルームに入ると、投稿したコメントやアンケート結果が見れます。
 4. ブラウザで確認したい場合は、下記のURLとなる。(GoogleChrome推奨、InternetExprorer不可)
-   * コントローラ(参加者向け): `https://nicomatsu-demo.herokuapp.com/controller/[room]`
-   * コメント表示ページ: `https://nicomatsu-demo.herokuapp.com/display/[room]`
-   * アンケートページ: `https://nicomatsu-demo.herokuapp.com/survey/[room]`
+   * コントローラ(参加者向け): `https://nicomatsu.herokuapp.com/controller/[room]`
+   * コメント表示ページ: `https://nicomatsu.herokuapp.com/display/[room]`
+   * アンケートページ: `https://nicomatsu.herokuapp.com/survey/[room]`
 
 5. 透明なウィンドウでコメントを重ねるデスクトップアプリ(nicomatsu-display)
 [windows10用インストーラ](https://github.com/mochiokun/nicomatsu-display/archive/refs/tags/installer_win10_v1.0.0.zip)
 接続先のHerokuアプリ名に`nicomatsu`と入れることでデモ用サーバに接続します。
+
+# Feature
+発表やWebミーティングの際に、画面共有元で[nicomatsu-display](https://github.com/mochiokun/nicomatsu-display)を利用することで、資料の上にコメントやスタンプを重ねて共有が可能となる。
+
+参加者側のコメント・質問やリアクション（スタンプ）が画面上に流れるので、発表者側で拾うことができ、一体感のある双方向のコミュニケーションを実現する。
+
+アンケートは参加者の回答をリアルタイムで集計・反映されるため、その場で結果共有が可能。
 
 # Requirement
 node.jsとnpmのインストールが必要。
@@ -61,12 +68,6 @@ Heroku以外のサーバで動作させたい場合は、下記を実行。
 4. 同フォルダ内で `npm start` を実行する
 5. http(s)://YOURIP:2525　へアクセスする　※本アプリはSSL対応していないため、LBなどでSSLアクセラレーションを実施されたい。
 
-# Author
-Takuya Komatsubara @mochiokun
-
-# License
-nicomatsu-server is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
-
 # Tips
 ## コメント表示（発表者用）ページへの認証機能追加
 投稿されるコメントは発表者用ページへアクセスすることでインターネット上から参照可能である。（保存機能はないのでリアルタイムのみ）
@@ -92,3 +93,10 @@ pngファイルは背景透過、サイズ200px×200px程度までを推奨す�
     * どちらのフォルダに追加するかでコントローラの表示位置が異なる
     * ファイル名の昇順に表示されるので、必要に応じてファイル名の先頭に数値などを付与して順番を指定すること
 2. 追加したブランチをHerokuにデプロイする。
+
+# Author
+Takuya Komatsubara @mochiokun
+
+# License
+nicomatsu-server is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+
