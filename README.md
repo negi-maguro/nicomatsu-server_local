@@ -26,7 +26,7 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
    * アンケートページ: `https://nicomatsu.herokuapp.com/survey/[room]`
 
 5. 透明なウィンドウでコメントを重ねるデスクトップアプリ(nicomatsu-display)
-[windows10用インストーラ](https://github.com/mochiokun/nicomatsu-display/archive/refs/tags/installer_win10_v1.0.0.zip)
+[windows10用インストーラ](https://github.com/mochiokun/nicomatsu-display/archive/refs/tags/installer_win10_v2.0.0.zip)
 接続先のHerokuアプリ名に`nicomatsu`と入れることでデモ用サーバに接続します。
 
 # Requirement
