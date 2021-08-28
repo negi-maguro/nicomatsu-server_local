@@ -4,14 +4,14 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
 
 # Feature
 ### 1. 参加者画面で入力したコメント・スタンプが発表者の画面に流れる！ 
-<img src="https://user-images.githubusercontent.com/70475693/130816950-29c5d9d6-01f4-403f-877c-07e806d1e80a.png" alt="コメントとスタンプ" width="70%">
+<img src="https://user-images.githubusercontent.com/70475693/131212479-e626a86e-152b-45e4-af38-c6c769a0ddf1.png" alt="スマホ画面" width="20%">  <img src="https://user-images.githubusercontent.com/70475693/131212323-a7b10eb9-0f5d-42d9-83f0-8d5e854fc585.gif" alt="コメントとスタンプ" width="60%">
 
 * 発表やWebミーティングの際に、画面共有元で[nicomatsu-display](https://github.com/mochiokun/nicomatsu-display)を利用することで、資料上にコメントやスタンプを重ねて画面共有が可能となる。画面の共有はWeb会議システム(Teams,Zoom,Webexなど)にて全画面を選択して共有を行う。
 * 参加者側のコメント・質問やリアクション（スタンプ）が画面上に流れるので、発表者側で拾うことができ、一体感のある双方向のコミュニケーションを実現する。
 
 
 ### 2. 参加者画面から投票でリアルタイムにアンケート結果を表示する！
-<img src="https://user-images.githubusercontent.com/70475693/130815306-4ec363dd-94a3-47fc-adf8-fe9978640789.png" alt="アンケート" width="70%">
+<img src="https://user-images.githubusercontent.com/70475693/131212327-12d04927-3ba1-45f2-8f4a-56b12c7c5d92.gif" alt="アンケート" width="60%">
 
 * ブラウザ側にデータを保持する作りであるため、ページを開く前に投票されたものは無効となる。
 * 質問と選択肢を事前に入力して保存(Saveボタン)することが可能。保存済みの質問を選択することで選択肢が読み込まれる。
