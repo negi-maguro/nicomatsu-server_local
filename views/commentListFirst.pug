@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    title= title
+    link(rel='stylesheet',href='../public/stylesheets/style.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js')
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+  
+  body
+    .container
+      h1= title
+      h3 コメントリストを開く
+
+      input#room(type="text")
+      button.btn.btn-info(type="button",onClick="roomJump()") ルームのコメントリストに移動&nbsp
+        i.fas.fa-door-open
+      script(type='text/javascript').
+        function roomJump(){
+          const room_id = document.getElementById("room").value;
+          const href = "/commentList/"+room_id+"/#{name}";
+          location.href = href;
+        };

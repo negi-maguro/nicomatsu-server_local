@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const session = require("express-session");
 const logger = require('morgan');
 
+
 http.listen(process.env.PORT || 2525, function(){
   console.log("PORT : " + (process.env.PORT || 2525));
 });
@@ -31,7 +32,7 @@ const displayRouter = require('./routes/display');
 const controllerRouter = require('./routes/controller');
 const startNewRouter = require('./routes/startNew');
 const surveyRouter = require('./routes/survey');
-
+const commentListRouter = require('./routes/commentList');
 
 app.use('/', indexRouter);
 app.use("/public",express.static(path.join(__dirname, 'public')));
@@ -40,3 +41,4 @@ app.use('/display', displayRouter);
 app.use('/controller', controllerRouter);
 app.use('/startNew', startNewRouter);
 app.use('/survey', surveyRouter);
+app.use('/commentList', commentListRouter);
