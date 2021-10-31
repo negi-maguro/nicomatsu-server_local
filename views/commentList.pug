@@ -1,0 +1,22 @@
+html
+  head
+    meta(charset='UTF-8')
+    title nicomatsu-CommentList
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/public/stylesheets/commentList.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js')
+    script(type='text/javascript', src='/public/javascripts/commentListFilter.js')
+    script(type='text/javascript', src='/public/javascripts/commentList.js')    
+
+
+
+  body
+    .container-fluid
+      h1 nicomatsu
+      p !{msg}ルームのコメントを表示します。（リロードや画面遷移するとデータは削除されます）
+      
+      table#targetTable(style="width:90%")
+        th.tableColumnNarrow(style="width:15%") Date
+        th.tableColumnNarrow(cmanFilterBtn style="width:15%") Name
+        th.tableColumnWide(cmanFilterBtn style="width:70%") Comment

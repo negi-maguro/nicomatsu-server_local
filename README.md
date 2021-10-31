@@ -3,7 +3,7 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
 
 
 # Feature
-### 1. 参加者画面で入力したコメント・スタンプが発表者の画面に流れる！ 
+### 1. 参加者画面で入力したコメント・スタンプが発表者の画面に流れる！
 <img src="https://user-images.githubusercontent.com/70475693/131212479-e626a86e-152b-45e4-af38-c6c769a0ddf1.png" alt="スマホ画面" width="20%">  <img src="https://user-images.githubusercontent.com/70475693/131212323-a7b10eb9-0f5d-42d9-83f0-8d5e854fc585.gif" alt="コメントとスタンプ" width="60%">
 
 * 発表やWebミーティングの際に、画面共有元で[nicomatsu-display](https://github.com/mochiokun/nicomatsu-display)を利用することで、資料上にコメントやスタンプを重ねて画面共有が可能となる。画面の共有はWeb会議システム(Teams,Zoom,Webexなど)にて全画面を選択して共有を行う。
@@ -30,9 +30,13 @@ nicomatsu-serverはnode.jsで動作する、Web会議での双方向コミュニ
    * コメント表示ページ: `https://nicomatsu.herokuapp.com/display/[room]`
    * アンケートページ: `https://nicomatsu.herokuapp.com/survey/[room]`
 
+
 5. 透明なウィンドウでコメントを重ねるデスクトップアプリ(nicomatsu-display)
 [windows10用インストーラ](https://github.com/mochiokun/nicomatsu-display/archive/refs/tags/installer_win10_v2.0.0.zip)
 接続先のHerokuアプリ名に`nicomatsu`と入れることでデモ用サーバに接続します。
+
+6. プレゼンテーションやウェビナーの運営でコメントを読み返したい場合の、コメント表示ページ。（フィルタ機能付き）
+  * コメントリストページ: `https://nicomatsu.herokuapp.com/commentList/[room]`
 
 # Requirement
 node.jsとnpmのインストールが必要。
@@ -98,4 +102,3 @@ Takuya Komatsubara @mochiokun
 
 # License
 nicomatsu-server is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
-
