@@ -17,7 +17,7 @@ if (authFlg){
 // ルーム名未入力ならルーム選択画面を開く
 router.get('/', function(req, res, next) {
   res.render("commentListFirst",{
-    title : "ニコニコナイト"
+    title : "nicomatsu"
   });
 });
 

@@ -4,7 +4,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
   const msg = "";
   res.render("index",{
-    title : "ニコニコナイト",
+    title : "nicomatsu",
     msg : msg,
   });
 });
