@@ -6,7 +6,7 @@
 const myUrl = decodeURI(location.href);
 const splitMyUrl = myUrl.split('/');
   // 末尾に/があってもなくてもいいようにcontrollerの次をルーム名として設定
-const roomName = splitMyUrl[splitMyUrl.indexOf('controller')+1] || 'オープンルーム'
+const roomName = splitMyUrl[splitMyUrl.indexOf('controller')+1] || 'ニコニコナイト'
 console.log(roomName);
 
 
@@ -32,14 +32,14 @@ function handleSubmit (form) {
 * 引数：選択されたスタンプファイル名
 * 戻り値：なし
 *-----------------------------------------------------*/
-function stamp (type) {
-  const url = `/nico/like/${roomName}/?image=stamps/${type}`;
-  console.log(url);
-  $.get(url)
-    .fail(function () {
-      alert('failed to stamp.');
-  })
-};
+// function stamp (type) {
+//   const url = `/nico/like/${roomName}/?image=stamps/${type}`;
+//   console.log(url);
+//   $.get(url)
+//     .fail(function () {
+//       alert('failed to stamp.');
+//   })
+// };
 
 
 /*------------------------------------------------------
@@ -47,14 +47,14 @@ function stamp (type) {
 * 引数：選択されたスタンプファイル名
 * 戻り値：なし
 *-----------------------------------------------------*/
-function seasonStamp (type) {
-  const url = `/nico/like/${roomName}/?image=seasons/${type}`;
-  console.log(url);
-  $.get(url)
-    .fail(function () {
-      alert('failed to stamp.');
-  })
-};
+// function seasonStamp (type) {
+//   const url = `/nico/like/${roomName}/?image=seasons/${type}`;
+//   console.log(url);
+//   $.get(url)
+//     .fail(function () {
+//       alert('failed to stamp.');
+//   })
+// };
 
 /*------------------------------------------------------
 * アンケート回答をGetリクエストで送信する
@@ -62,26 +62,26 @@ function seasonStamp (type) {
 * 引数：選択された回答
 * 戻り値：なし
 *-----------------------------------------------------*/
-function answer (type) {
-  const surveyForm = document.getElementById('survey')
-  const result = window.confirm(type + 'で回答します。\n ※回答後の取り消しはできません。');
-  if( result ) {
-    const url = `/nico/answer/${roomName}/?answer=${type}` ;
-    console.log(url);
-    surveyForm.style.display = "none";
-    $.get(url)
-    .fail(function () {
-      alert('failed to answer.');
-      surveyForm.style.display = "block";
-    })
-    // 10秒後に回答ボタンを再表示
-    setTimeout(() => {
-      surveyForm.style.display = "block";
-    }, 10000);
-  }else{
-    //- 何もしない
-  }
-};
+// function answer (type) {
+//   const surveyForm = document.getElementById('survey')
+//   const result = window.confirm(type + 'で回答します。\n ※回答後の取り消しはできません。');
+//   if( result ) {
+//     const url = `/nico/answer/${roomName}/?answer=${type}` ;
+//     console.log(url);
+//     surveyForm.style.display = "none";
+//     $.get(url)
+//     .fail(function () {
+//       alert('failed to answer.');
+//       surveyForm.style.display = "block";
+//     })
+//     // 10秒後に回答ボタンを再表示
+//     setTimeout(() => {
+//       surveyForm.style.display = "block";
+//     }, 10000);
+//   }else{
+//     //- 何もしない
+//   }
+// };
 
 
 /*-------------------------------------------------------

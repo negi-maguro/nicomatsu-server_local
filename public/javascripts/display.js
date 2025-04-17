@@ -24,13 +24,13 @@ socket.on('reconnect', () =>{
 });
 
 
-// コメント受信時にniconico.jsのhandleCommentを呼ぶ
-socket.on('comment', function(msg){
-    handleComment (msg) ;
-});
+// // コメント受信時にniconico.jsのhandleCommentを呼ぶ
+// socket.on('comment', function(msg){
+//     handleComment (msg) ;
+// });
 
 
-// スタンプ受信時にniconico.jsのhandleLikeを呼ぶ
-socket.on('like', function(msg){
-    handleLike (msg) ;
-});
+// // スタンプ受信時にniconico.jsのhandleLikeを呼ぶ
+// socket.on('like', function(msg){
+//     handleLike (msg) ;
+// });

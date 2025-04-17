@@ -93,51 +93,51 @@ function handleComment (msg) {
 * 引数：GETリクエストされたクエリパラメタをオブジェクトにしたもの
 * 戻り値：なし
 *-----------------------------------------------------*/
-function handleLike (msg) {
-  // スタンプの情報（ファイル名）を設定
-  const image = msg.image;
-  const url = `/public/images/${image}.png`;
+// function handleLike (msg) {
+//   // スタンプの情報（ファイル名）を設定
+//   const image = msg.image;
+//   const url = `/public/images/${image}.png`;
 
-  // スタンプのimg要素を作成
-  const stamp = document.createElement('img');
+//   // スタンプのimg要素を作成
+//   const stamp = document.createElement('img');
 
-  // スタンプ要素が読み込まれたら表示位置アニメーションを設定する
-  stamp.addEventListener('load', function (e) {
-    stamp.style.position = 'fixed';
-    stamp.style.left = rand(window.innerWidth) - stamp.width / 2 + 'px';
-    stamp.style.top = rand(window.innerHeight) - stamp.height / 2 + 'px';
-    stamp.style.zIndex = 2147483647;
-    stamp.style.opacity = 0.0;
+//   // スタンプ要素が読み込まれたら表示位置アニメーションを設定する
+//   stamp.addEventListener('load', function (e) {
+//     stamp.style.position = 'fixed';
+//     stamp.style.left = rand(window.innerWidth) - stamp.width / 2 + 'px';
+//     stamp.style.top = rand(window.innerHeight) - stamp.height / 2 + 'px';
+//     stamp.style.zIndex = 2147483647;
+//     stamp.style.opacity = 0.0;
 
-    // スタンプのimg要素をbodyに追加
-    document.body.appendChild(stamp);
+//     // スタンプのimg要素をbodyに追加
+//     document.body.appendChild(stamp);
 
-    // スタンプがだんだん大きくなって透明からくっきりして薄くなって終わる設定
-    const effect = [{
-        opacity: 0.0,
-        transform: 'scale(0.0, 0.0) translate(0, 20px)'
-      },{
-        opacity: 1.0,
-        transform: 'scale(0.7, 0.7) translate(0, 0px)'
-      },{
-        opacity: 0.7,
-        transform: 'scale(1.0, 1.0) translate(0, -50px)'
-      }
-    ];
+//     // スタンプがだんだん大きくなって透明からくっきりして薄くなって終わる設定
+//     const effect = [{
+//         opacity: 0.0,
+//         transform: 'scale(0.0, 0.0) translate(0, 20px)'
+//       },{
+//         opacity: 1.0,
+//         transform: 'scale(0.7, 0.7) translate(0, 0px)'
+//       },{
+//         opacity: 0.7,
+//         transform: 'scale(1.0, 1.0) translate(0, -50px)'
+//       }
+//     ];
 
-    // スタンプを表示しておく速さなどを設定
-    const timing = {};
-    // スタンプの表示速度 値が大きいほど遅い（何msec画面に表示させるか）
-    timing.duration = 1500;
-    // アニメーションの繰り返し回数
-    timing.iterations = 1;
-    // アニメーション速度の上げ方（最初が速くて最後遅い）
-    timing.easing = 'ease-in';
+//     // スタンプを表示しておく速さなどを設定
+//     const timing = {};
+//     // スタンプの表示速度 値が大きいほど遅い（何msec画面に表示させるか）
+//     timing.duration = 1500;
+//     // アニメーションの繰り返し回数
+//     timing.iterations = 1;
+//     // アニメーション速度の上げ方（最初が速くて最後遅い）
+//     timing.easing = 'ease-in';
 
-    // アニメーションで動かし終わったらbodyに追加した要素を削除
-    stamp.animate(effect, timing).onfinish = function () {
-      document.body.removeChild(stamp);
-    };
-  });
-  stamp.src = url;
-};
+//     // アニメーションで動かし終わったらbodyに追加した要素を削除
+//     stamp.animate(effect, timing).onfinish = function () {
+//       document.body.removeChild(stamp);
+//     };
+//   });
+//   stamp.src = url;
+// };
