@@ -89,39 +89,39 @@ html
               input(type='radio', name='color', value='Rainbow')
 
       //- スタンプ送信用のフォーム
-      form#stamp.form-horizontal(role='form', action='/nico/like', method='get', onsubmit='handleSubmit(this); return false;')
-        .form-group
-          label.control-label スタンプ
-          .input-group
-            //- サーバから受け取ったstampsフォルダ内のファイル数だけボタンと画像を描画
-            each filename in stampList
-              button.btn.btn-default.btn-stamp(type='button', onclick=`stamp('${filename}')`)
-                img(src=`/public/images/stamps/${filename}.png`, alt=`${filename}`)
+      //- form#stamp.form-horizontal(role='form', action='/nico/like', method='get', onsubmit='handleSubmit(this); return false;')
+      //-   .form-group
+      //-     label.control-label スタンプ
+      //-     .input-group
+      //-       //- サーバから受け取ったstampsフォルダ内のファイル数だけボタンと画像を描画
+      //-       each filename in stampList
+      //-         button.btn.btn-default.btn-stamp(type='button', onclick=`stamp('${filename}')`)
+      //-           img(src=`/public/images/stamps/${filename}.png`, alt=`${filename}`)
 
-        .form-group
-          label.control-label 季節スタンプ
-          .input-group
-            //- サーバから受け取ったseasonsフォルダ内のファイル数だけボタンと画像を描画
-            each filename in seasonStampList
-              button.btn.btn-default.btn-stamp(type='button', onclick=`seasonStamp('${filename}')`)
-                img(src=`/public/images/seasons/${filename}.png`, alt=`${filename}`)
+        //- .form-group
+        //-   label.control-label 季節スタンプ
+        //-   .input-group
+        //-     //- サーバから受け取ったseasonsフォルダ内のファイル数だけボタンと画像を描画
+        //-     each filename in seasonStampList
+        //-       button.btn.btn-default.btn-stamp(type='button', onclick=`seasonStamp('${filename}')`)
+        //-         img(src=`/public/images/seasons/${filename}.png`, alt=`${filename}`)
 
 
-      //- アンケート回答用のフォーム
-      form#survey.form-horizontal(style='display:block' role='form' action='/nico/answer' method='get' onsubmit='handleSubmit(this); return false;')
-        .form-group
-          label.control-label アンケート
-          .input-group
-            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'A\')')
-              img(src='/public/images/survey/A.png', alt='A')
-            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'B\')')
-              img(src='/public/images/survey/B.png', alt='B')
-            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'C\')')
-              img(src='/public/images/survey/C.png', alt='C')
-            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'D\')')
-              img(src='/public/images/survey/D.png', alt='D')
-            button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'E\')')
-              img(src='/public/images/survey/E.png', alt='E')
+      //- //- アンケート回答用のフォーム
+      //- form#survey.form-horizontal(style='display:block' role='form' action='/nico/answer' method='get' onsubmit='handleSubmit(this); return false;')
+      //-   .form-group
+      //-     label.control-label アンケート
+      //-     .input-group
+      //-       button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'A\')')
+      //-         img(src='/public/images/survey/A.png', alt='A')
+      //-       button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'B\')')
+      //-         img(src='/public/images/survey/B.png', alt='B')
+      //-       button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'C\')')
+      //-         img(src='/public/images/survey/C.png', alt='C')
+      //-       button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'D\')')
+      //-         img(src='/public/images/survey/D.png', alt='D')
+      //-       button.btn.btn-default.btn-stamp(type='button', onclick='answer(\'E\')')
+      //-         img(src='/public/images/survey/E.png', alt='E')
 
       //- QRコード
       form#QR.form-horizontal
