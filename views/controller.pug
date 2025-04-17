@@ -20,28 +20,20 @@ html
       h1 ニコニコナイト
 
       p !{msg}
-      //- form#comment.form-horizontal.comment(role='form', action='/nico/comment' ,method='post', onsubmit='if (this.body.value == \'\') return false; handleSubmit(this); this.body.value = \'\'; return false;')
-      //-   //- 名前入力（チェックボックスで表示・非表示を変更）
-      //-   //- .form-group
-      //-   //-   .input-group
-      //-   //-     label.control-label.col-sm-2.col-4 匿名　
-      //-   //-       input(id='tokumei', type='checkbox', autocomplete="off", checked, onclick="checkdiv(this,'nickname')")
-      //-   //-     input.form-control.col-8(id='nickname', type='text', name='nickname', maxlength='60', placeholder='名前を入力してください' style="border-radius: 5px;display:none;")
+      form#comment.form-horizontal.comment(role='form', action='/nico/comment' ,method='post', onsubmit='if (this.body.value == \'\') return false; handleSubmit(this); this.body.value = \'\'; return false;')
+        名前入力（チェックボックスで表示・非表示を変更）
+        .form-group
+          .input-group
+            label.control-label.col-sm-2.col-4 匿名　
+              input(id='tokumei', type='checkbox', autocomplete="off", checked, onclick="checkdiv(this,'nickname')")
+            input.form-control.col-8(id='nickname', type='text', name='nickname', maxlength='60', placeholder='名前を入力してください' style="border-radius: 5px;display:none;")
 
-      //-   //- コメント入力
-      //-   .form-group
-      //-     .input-group
-      //-       input.form-control.col-sm-10(type='text', name='body', maxlength='60', placeholder='コメントを入力してください' style="border-radius: 5px")
-      //-       button.btn.btn-primary(type='submit')
-      //-         i.fab.fa-telegram-plane 送信
-
-      form#comment.form-horizontal.comment(role='form', action='/nico/comment', method='post', onsubmit='if (this.body.value == \'\') return false; handleSubmit(this); this.body.value = \'\'; return false;')
-      //- コメント入力
-      .form-group
-        .input-group
-          input.form-control.col-sm-10(type='text', name='body', maxlength='60', placeholder='コメントを入力してください' style="border-radius: 5px")
-          button.btn.btn-primary(type='submit')
-            i.fab.fa-telegram-plane 送信
+        //- コメント入力
+        .form-group
+          .input-group
+            input.form-control.col-sm-10(type='text', name='body', maxlength='60', placeholder='コメントを入力してください' style="border-radius: 5px")
+            button.btn.btn-primary(type='submit')
+              i.fab.fa-telegram-plane 送信
 
         //- 速さ(レンジスライダで表示)
         .form-group
